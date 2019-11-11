@@ -1,0 +1,23 @@
+﻿@model FootballStore.Models.Order
+<div id="dialog-confirm" title="Are you sure to delete this?">
+    <p>
+        <span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>
+        These items will be permanently deleted and cannot be recovered. Are you sure?
+    </p>
+    @using (Html.BeginForm("Delete", "Shopping", new { id = Model.Id }, FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" />
+            <button id="btnCancel" type="button">Cancel</button>
+        </div>
+    }
+</div>
+
+<script>
+    $("#btnCancel").click(function () {
+        $("#dialog-confirm").dialog("close");
+    });
+    $('button.ui-dialog-titlebar-close').text('X');
+</script>
+

@@ -1,0 +1,52 @@
+﻿@model IEnumerable<FootballStore.Models.Product>
+@{
+    ViewBag.Title = "Product";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 style="text-align: center">Product</h2>
+
+@if (ViewBag.Message != null)
+{
+    <div class="fadeOutMessage">
+        @ViewBag.Message
+    </div>
+}
+
+@Html.ActionLink("Add new product", "Create")
+
+@using (Html.BeginForm("Product", "Product", FormMethod.Get))
+{
+    <h3>Filter</h3>
+    <table>
+        <tr>
+            <td>Name: </td>
+            <td><input type="text" name="name" /></td>
+        </tr>
+        <tr>
+            <td>Price: </td>
+            <td>From: <input type="number" name="min" /> To: <input type="number" name="max" /></td>
+        </tr>
+    </table>
+    <input type="submit" value="Filter" />
+}
+<div class="container">
+    @foreach (var product in Model)
+    {
+        <div class="product">
+            <img src=@product.UrlImage alt=@product.Name class="image" style="width:100%">
+            <div class="middle">
+                @Html.ActionLink("Add to shopping Card", "AddToShoppingCard", new { id = product.Id }, new { @class = "buttonAddToShoppingCard" })
+            </div>
+            <div class="control">
+                @Html.ActionLink("Detail", "Detail", new { id = product.Id }) |
+                @Html.ActionLink("Edit", "Edit", new { id = product.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = product.Id })
+            </div>
+            <div class="footer">
+                <div>@Html.DisplayFor(item => product.Name)</div>
+                <div>@Html.DisplayFor(item => product.Price) vnd</div>
+            </div>
+        </div>
+    }
+</div>

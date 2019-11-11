@@ -1,0 +1,55 @@
+﻿@{
+    ViewBag.Title = "ChatRoom";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Welcome to Chat Room</h2>
+<div>
+    <ul id="discussion">
+    </ul>
+</div>
+
+<div id="areaSendMessage">
+    <input id="inputMessage" type="text" placeholder="Type message here..."/>
+    <button id="btnSend" disabled>Send</button>
+</div>
+
+
+
+@section scripts {
+    <script src="~/Scripts/jquery.signalR-2.4.1.min.js"></script>
+    <script src="~/signalr/hubs"></script>
+
+    <script>
+        let chatHub = $.connection.chatHub;
+        chatHub.client.sendMessageToClients = function (userName, message, time) {
+            $('#discussion').append('<li class="leftMessage"><div class="contentMessage"><div class="name">' + userName + '\t' + time + '</div>'
+                + '<div class="message">' + message + '</div></div></li>');
+        };
+
+        $.connection.hub.start().done(function () {
+            $('#btnSend').click(function () {
+                let username = '@ViewBag.userName';
+                let message = $('#inputMessage').val().trim();
+                let today = new Date();
+                let time = today.getHours() + ':' + today.getMinutes();
+
+                $('#inputMessage').val('');
+                $('#btnSend').prop('disabled', true);
+                //add to own user
+                $('#discussion').append('<li class="rightMessage"><div class="contentMessage"><div class="name">' + username + '\t' + time + '</div>'
+                    + '<div class="message">' + message + '</div></div></li>');
+
+                chatHub.server.sendMessageToServer(username, message, time);
+            });
+        });
+
+        $('#inputMessage').keyup(function (e) {
+            if (this.value.trim().length > 0) {
+                $('#btnSend').prop('disabled', false);
+                if (e.keyCode === 13) $('#btnSend').click();
+            }
+        });
+
+
+    </script>
+}

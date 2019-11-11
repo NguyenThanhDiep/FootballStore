@@ -1,0 +1,34 @@
+﻿@model FootballStore.Models.Product
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Detail</h2>
+
+<table class="detail">
+    <tr>
+        <td>@Html.DisplayNameFor(p => p.Id)</td>
+        <td>@Model.Id</td>
+    </tr>
+    <tr>
+        <td>@Html.DisplayNameFor(p => p.Name)</td>
+        <td>@Model.Name</td>
+    </tr>
+    <tr>
+        <td>@Html.DisplayNameFor(p => p.Price)</td>
+        <td>@Model.Price VND</td>
+    </tr>
+    <tr>
+        <td>Image</td>
+        <td><img src="@Model.UrlImage" alt="@Model.Name" /></td>
+    </tr>
+</table>
+
+<br />
+<div>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) | 
+    @Html.ActionLink("Back to Product page", "Product")
+</div>
+
+

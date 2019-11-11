@@ -1,0 +1,80 @@
+﻿@using FootballStore.Models
+@model IEnumerable<ShoppingCard>
+@{
+    ViewBag.Title = "Shopping";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    bool? NameAscending = ViewData["NameAscending"] as bool?;
+    bool? PriceAscending = ViewData["PriceAscending"] as bool?;
+    bool? AmountAscending = ViewData["AmountAscending"] as bool?;
+}
+
+<h2>Your Shopping Card</h2>
+
+<table class="detail">
+    <thead>
+        <tr>
+            <th class="@(NameAscending == false ? "arrangedAsc" : NameAscending == true ? "arrangedDes" : "")">
+                @Html.ActionLink("Name", "Shopping", new { NameAscending = NameAscending ?? true })
+            </th>
+            <th class="@(PriceAscending == false? "arrangedAsc" : PriceAscending == true ? "arrangedDes" : "")">
+                @Html.ActionLink("Price (vnd)", "Shopping", new { PriceAscending = PriceAscending ?? true })
+            </th>
+            <th class="@(AmountAscending == false? "arrangedAsc" : AmountAscending == true ? "arrangedDes" : "")">
+                @Html.ActionLink("Amount", "Shopping", new { AmountAscending = AmountAscending ?? true })
+            </th>
+            <th>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model)
+        {
+            <tr>
+                <td>@product.Name</td>
+                <td>@product.Price</td>
+                <td>@product.Amount</td>
+                <td><button type="button" onclick="Decrease1Product(@product.Id)">Decrease by 1 product</button></td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td>Total</td>
+            <td colspan="3">@ViewBag.TotalPrice vnd</td>
+        </tr>
+    </tfoot>
+</table>
+
+@{ if (ViewBag.ProductToDelete != null)
+    {
+        Html.RenderPartial("_Delete", ViewBag.ProductToDelete as Order);
+    }
+    else
+    {
+        Html.RenderPartial("_Delete", new Order());
+    }
+}
+
+@*@Html.Partial("Delete", new FootballStore.Models.Order())*@
+
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            $("#dialog-confirm").dialog({
+                resizable: false,
+                height: "auto",
+                width: 400,
+                modal: true,
+            });
+            $("#dialog-confirm").dialog("close");
+        });
+
+        function Decrease1Product(id) {
+            $('#dialog-confirm').load('@Url.Action("Delete","Shopping")' + '/' + id);
+            $("#dialog-confirm").dialog("open");
+        };
+    </script>
+}
+
+
+
