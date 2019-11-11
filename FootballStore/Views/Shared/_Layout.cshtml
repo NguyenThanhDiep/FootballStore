@@ -21,16 +21,23 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Football Store NTD", "Home", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink(Localization._Layout.App_Name, "Home", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li class="@(ViewBag.Title == "Home" ? "choice": "")">@Html.ActionLink("Home", "Home", "Home")</li>
-                    <li class="@(ViewBag.Title == "Product" ? "choice": "")">@Html.ActionLink("Product", "Product", "Product")</li>
-                    <li class="@(ViewBag.Title == "Shopping" ? "choice": "")">@Html.ActionLink("Shopping Card", "Shopping", "Shopping")</li>
-                    <li class="@(ViewBag.Title == "ChatRoom" ? "choice": "")">@Html.ActionLink("Chat Room", "ChatRoom", "ChatRoom")</li>
+                    <li class="@(ViewBag.Title == "Home" ? "choice": "")">@Html.ActionLink(Localization._Layout.Home_Menu, "Home", "Home")</li>
+                    <li class="@(ViewBag.Title == "Product" ? "choice": "")">@Html.ActionLink(Localization._Layout.Product_Menu, "Product", "Product")</li>
+                    <li class="@(ViewBag.Title == "Shopping" ? "choice": "")">@Html.ActionLink(Localization._Layout.Shopping_Menu, "Shopping", "Shopping")</li>
+                    <li class="@(ViewBag.Title == "ChatRoom" ? "choice": "")">@Html.ActionLink(Localization._Layout.ChatRoom_Menu, "ChatRoom", "ChatRoom")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
+                <div class="dropdown">
+                    <button class="dropbtn">@(ViewBag.Language == "vi" ? Localization._Layout.str_VietNamese : Localization._Layout.str_English)</button>
+                    <div class="dropdown-content">
+                        @Html.ActionLink(Localization._Layout.str_English, "ChangeLanguage", "Home", new { lang = "en", returnUrl = this.Request.RawUrl }, null)
+                        @Html.ActionLink(Localization._Layout.str_VietNamese, "ChangeLanguage", "Home", new { lang = "vi", returnUrl = this.Request.RawUrl }, null)
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -38,7 +45,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - NTD Shop</p>
+            <p>&copy; @DateTime.Now.Year - @Localization._Layout.App_Footer</p>
         </footer>
     </div>
 
