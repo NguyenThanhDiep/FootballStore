@@ -13,22 +13,22 @@
     </div>
 }
 
-@Html.ActionLink("Add new product", "Create")
+@Html.ActionLink(Localization.Product.link_AddNewProduct, "Create")
 
 @using (Html.BeginForm("Product", "Product", FormMethod.Get))
 {
-    <h3>Filter</h3>
+    <h3>@Localization.Product.str_Filter</h3>
     <table>
         <tr>
-            <td>Name: </td>
+            <td>@Localization.Product.str_Name: </td>
             <td><input type="text" name="name" /></td>
         </tr>
         <tr>
-            <td>Price: </td>
-            <td>From: <input type="number" name="min" /> To: <input type="number" name="max" /></td>
+            <td>@Localization.Product.str_Price: </td>
+            <td>@Localization.Product.str_From: <input type="number" name="min" /> @Localization.Product.str_To: <input type="number" name="max" /></td>
         </tr>
     </table>
-    <input type="submit" value="Filter" />
+    <input type="submit" value="@Localization.Product.btn_Filter" />
 }
 <div class="container">
     @foreach (var product in Model)
@@ -36,12 +36,12 @@
         <div class="product">
             <img src=@product.UrlImage alt=@product.Name class="image" style="width:100%">
             <div class="middle">
-                @Html.ActionLink("Add to shopping Card", "AddToShoppingCard", new { id = product.Id }, new { @class = "buttonAddToShoppingCard" })
+                @Html.ActionLink(Localization.Product.btn_AddToShoppingCard, "AddToShoppingCard", new { id = product.Id }, new { @class = "buttonAddToShoppingCard" })
             </div>
             <div class="control">
-                @Html.ActionLink("Detail", "Detail", new { id = product.Id }) |
-                @Html.ActionLink("Edit", "Edit", new { id = product.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = product.Id })
+                @Html.ActionLink(Localization.Product.link_Detail, "Detail", new { id = product.Id }) |
+                @Html.ActionLink(Localization.Product.link_Edit, "Edit", new { id = product.Id }) |
+                @Html.ActionLink(Localization.Product.link_Delete, "Delete", new { id = product.Id })
             </div>
             <div class="footer">
                 <div>@Html.DisplayFor(item => product.Name)</div>

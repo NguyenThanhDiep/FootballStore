@@ -17,8 +17,15 @@ namespace FootballStore.Controllers
         public ActionResult ChangeLanguage(string lang, string returnUrl)
         {
             Session["Culture"] = new CultureInfo(lang);
-            ViewBag.Language = lang;
-            return View("Home");
+            string[] url = returnUrl.Split('/');
+            switch (url.Length)
+            {
+                case 3:
+                    string actionName = url[2].Split('?')[0];
+                    return RedirectToAction(actionName, url[1]);
+                default:
+                    return RedirectToAction("Home");
+            }
         }
     }
 }

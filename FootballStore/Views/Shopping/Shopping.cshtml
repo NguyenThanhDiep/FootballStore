@@ -8,19 +8,19 @@
     bool? AmountAscending = ViewData["AmountAscending"] as bool?;
 }
 
-<h2>Your Shopping Card</h2>
+<h2>@Localization.Shopping.str_YourShoppingCard</h2>
 
 <table class="detail">
     <thead>
         <tr>
             <th class="@(NameAscending == false ? "arrangedAsc" : NameAscending == true ? "arrangedDes" : "")">
-                @Html.ActionLink("Name", "Shopping", new { NameAscending = NameAscending ?? true })
+                @Html.ActionLink(Localization.Shopping.link_Name, "Shopping", new { NameAscending = NameAscending ?? true })
             </th>
             <th class="@(PriceAscending == false? "arrangedAsc" : PriceAscending == true ? "arrangedDes" : "")">
-                @Html.ActionLink("Price (vnd)", "Shopping", new { PriceAscending = PriceAscending ?? true })
+                @Html.ActionLink(Localization.Shopping.link_Price, "Shopping", new { PriceAscending = PriceAscending ?? true })
             </th>
             <th class="@(AmountAscending == false? "arrangedAsc" : AmountAscending == true ? "arrangedDes" : "")">
-                @Html.ActionLink("Amount", "Shopping", new { AmountAscending = AmountAscending ?? true })
+                @Html.ActionLink(Localization.Shopping.link_Amount, "Shopping", new { AmountAscending = AmountAscending ?? true })
             </th>
             <th>
             </th>
@@ -33,7 +33,7 @@
                 <td>@product.Name</td>
                 <td>@product.Price</td>
                 <td>@product.Amount</td>
-                <td><button type="button" onclick="Decrease1Product(@product.Id)">Decrease by 1 product</button></td>
+                <td><button type="button" onclick="Decrease1Product(@product.Id)">@Localization.Shopping.str_Decrease1Product</button></td>
             </tr>
         }
     </tbody>

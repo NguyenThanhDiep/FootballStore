@@ -106,7 +106,7 @@ namespace FootballStore.Controllers
         {
             if (!User.Identity.IsAuthenticated)
             {
-                TempData["Message"] = "Please login before choosing product.";
+                TempData["Message"] = Localization.Product.message_Login;
             }
             else
             {
@@ -122,7 +122,7 @@ namespace FootballStore.Controllers
                     };
                     _db.Entry(order).State = EntityState.Added;
                     _db.SaveChanges();
-                    TempData["Message"] = $"You added a {product.Name} sucessfully.";
+                    TempData["Message"] = string.Format(Localization.Product.message_Add, product.Name);
                 }
                 catch (DataException ex)
                 {

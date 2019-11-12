@@ -2,15 +2,15 @@
     ViewBag.Title = "ChatRoom";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<h2>Welcome to Chat Room</h2>
+<h2>@Localization.ChatRoom.str_Welcome</h2>
 <div>
     <ul id="discussion">
     </ul>
 </div>
 
 <div id="areaSendMessage">
-    <input id="inputMessage" type="text" placeholder="Type message here..."/>
-    <button id="btnSend" disabled>Send</button>
+    <input id="inputMessage" type="text" placeholder="@Localization.ChatRoom.str_Placeholder" />
+    <button id="btnSend" disabled>@Localization.ChatRoom.btn_Send</button>
 </div>
 
 

@@ -32,7 +32,7 @@
                 </ul>
                 @Html.Partial("_LoginPartial")
                 <div class="dropdown">
-                    <button class="dropbtn">@(ViewBag.Language == "vi" ? Localization._Layout.str_VietNamese : Localization._Layout.str_English)</button>
+                    <button class="dropbtn">@((Session["Culture"] as System.Globalization.CultureInfo)?.Name == "vi" ? Localization._Layout.str_VietNamese : Localization._Layout.str_English)</button>
                     <div class="dropdown-content">
                         @Html.ActionLink(Localization._Layout.str_English, "ChangeLanguage", "Home", new { lang = "en", returnUrl = this.Request.RawUrl }, null)
                         @Html.ActionLink(Localization._Layout.str_VietNamese, "ChangeLanguage", "Home", new { lang = "vi", returnUrl = this.Request.RawUrl }, null)
