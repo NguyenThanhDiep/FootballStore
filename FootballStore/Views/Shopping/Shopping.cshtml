@@ -57,6 +57,9 @@
 
 @*@Html.Partial("Delete", new FootballStore.Models.Order())*@
 
+<div>
+    @Html.ActionLink("Export to Excel", "ExportToExcel", new { currentUrl = Request.Url.PathAndQuery })
+</div>
 @section scripts {
     <script>
         $(document).ready(function () {

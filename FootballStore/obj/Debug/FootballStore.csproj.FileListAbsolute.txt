@@ -99,4 +99,17 @@ C:\Users\RHG388\source\repos\FootballStore\FootballStore\bin\Microsoft.AspNet.Si
 C:\Users\RHG388\source\repos\FootballStore\FootballStore\bin\Microsoft.AspNet.SignalR.Core.xml
 C:\Users\RHG388\source\repos\FootballStore\FootballStore\bin\Microsoft.AspNet.SignalR.SystemWeb.pdb
 C:\Users\RHG388\source\repos\FootballStore\FootballStore\bin\Microsoft.AspNet.SignalR.SystemWeb.xml
+C:\Users\RHG388\source\repos\FootballStore\FootballStore\bin\vi\FootballStore.resources.dll
+C:\Users\RHG388\source\repos\FootballStore\FootballStore\obj\Debug\FootballStore.Localization.ChatRoom.resources
+C:\Users\RHG388\source\repos\FootballStore\FootballStore\obj\Debug\FootballStore.Localization.Product.resources
+C:\Users\RHG388\source\repos\FootballStore\FootballStore\obj\Debug\FootballStore.Localization.Shopping.resources
+C:\Users\RHG388\source\repos\FootballStore\FootballStore\obj\Debug\FootballStore.Localization._Layout.resources
+C:\Users\RHG388\source\repos\FootballStore\FootballStore\obj\Debug\FootballStore.Localization.ChatRoom.vi.resources
+C:\Users\RHG388\source\repos\FootballStore\FootballStore\obj\Debug\FootballStore.Localization.Product.vi.resources
+C:\Users\RHG388\source\repos\FootballStore\FootballStore\obj\Debug\FootballStore.Localization.Shopping.vi.resources
+C:\Users\RHG388\source\repos\FootballStore\FootballStore\obj\Debug\FootballStore.Localization._Layout.vi.resources
+C:\Users\RHG388\source\repos\FootballStore\FootballStore\obj\Debug\FootballStore.csproj.GenerateResource.cache
+C:\Users\RHG388\source\repos\FootballStore\FootballStore\obj\Debug\vi\FootballStore.resources.dll
+C:\Users\RHG388\source\repos\FootballStore\FootballStore\bin\EPPlus.dll
+C:\Users\RHG388\source\repos\FootballStore\FootballStore\bin\EPPlus.xml
 C:\Users\RHG388\source\repos\FootballStore\FootballStore\obj\Debug\FootballStore.csprojAssemblyReference.cache
