@@ -123,6 +123,9 @@
   <data name="App_Name" xml:space="preserve">
     <value>Cửa Hàng Bóng Đá NTD</value>
   </data>
+  <data name="Branch_Menu" xml:space="preserve">
+    <value>Chi Nhánh</value>
+  </data>
   <data name="ChatRoom_Menu" xml:space="preserve">
     <value>Phòng Chat</value>
   </data>

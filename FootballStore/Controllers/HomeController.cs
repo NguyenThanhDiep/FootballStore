@@ -27,5 +27,9 @@ namespace FootballStore.Controllers
                     return RedirectToAction("Home");
             }
         }
+        public ActionResult Branch()
+        {
+            return View();
+        }
     }
 }

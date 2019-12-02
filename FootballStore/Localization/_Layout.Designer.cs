@@ -79,6 +79,15 @@ namespace Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Branch.
+        /// </summary>
+        public static string Branch_Menu {
+            get {
+                return ResourceManager.GetString("Branch_Menu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Chat Room.
         /// </summary>
         public static string ChatRoom_Menu {

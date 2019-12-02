@@ -29,6 +29,7 @@
                     <li class="@(ViewBag.Title == "Product" ? "choice": "")">@Html.ActionLink(Localization._Layout.Product_Menu, "Product", "Product")</li>
                     <li class="@(ViewBag.Title == "Shopping" ? "choice": "")">@Html.ActionLink(Localization._Layout.Shopping_Menu, "Shopping", "Shopping")</li>
                     <li class="@(ViewBag.Title == "ChatRoom" ? "choice": "")">@Html.ActionLink(Localization._Layout.ChatRoom_Menu, "ChatRoom", "ChatRoom")</li>
+                    <li class="@(ViewBag.Title == "Branch" ? "choice":"")">@Html.ActionLink(Localization._Layout.Branch_Menu, "Branch", "Home")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
                 <div class="dropdown">

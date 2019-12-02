@@ -123,6 +123,9 @@
   <data name="App_Name" xml:space="preserve">
     <value>Football Store NTD</value>
   </data>
+  <data name="Branch_Menu" xml:space="preserve">
+    <value>Branch</value>
+  </data>
   <data name="ChatRoom_Menu" xml:space="preserve">
     <value>Chat Room</value>
   </data>

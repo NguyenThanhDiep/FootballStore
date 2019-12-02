@@ -113,3 +113,8 @@ C:\Users\RHG388\source\repos\FootballStore\FootballStore\obj\Debug\vi\FootballSt
 C:\Users\RHG388\source\repos\FootballStore\FootballStore\bin\EPPlus.dll
 C:\Users\RHG388\source\repos\FootballStore\FootballStore\bin\EPPlus.xml
 C:\Users\RHG388\source\repos\FootballStore\FootballStore\obj\Debug\FootballStore.csprojAssemblyReference.cache
+C:\Users\RHG388\source\repos\FootballStore\FootballStore\bin\Microsoft.Web.Helpers.dll
+C:\Users\RHG388\source\repos\FootballStore\FootballStore\bin\WebMatrix.Data.dll
+C:\Users\RHG388\source\repos\FootballStore\FootballStore\bin\WebMatrix.WebData.dll
+C:\Users\RHG388\source\repos\FootballStore\FootballStore\bin\WebMatrix.Data.xml
+C:\Users\RHG388\source\repos\FootballStore\FootballStore\bin\WebMatrix.WebData.xml

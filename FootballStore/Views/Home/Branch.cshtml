@@ -1,0 +1,65 @@
+﻿
+@{
+    ViewBag.Title = "Branch";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Branch</h2>
+
+<div class="tab">
+    <button class="tablinks" onclick="openCity(event, 'London')" id="defaultOpen">London</button>
+    <button class="tablinks" onclick="openCity(event, 'Paris')">Paris</button>
+    <button class="tablinks" onclick="openCity(event, 'HCM')">Ho Chi Minh</button>
+</div>
+
+<div id="London" class="tabcontent">
+</div>
+
+<div id="Paris" class="tabcontent">
+</div>
+
+<div id="HCM" class="tabcontent">
+</div>
+
+<script>
+    function openCity(evt, cityName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(cityName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+
+    // Get the element with id="defaultOpen" and click on it
+    document.getElementById("defaultOpen").click();
+</script>
+
+<script>
+    // Initialize and add the map
+    function initMap() {
+        // The location
+        let LonDonCoordinates = { lat: 51.507351, lng: -0.127758 };
+        let ParisCoordinates = { lat: 48.856613, lng: 2.352222 };
+        let HCMCoordinates = { lat: 10.823099, lng: 106.629662 };
+        // The map, centered
+        var mapLonDon = new google.maps.Map(
+            document.getElementById('London'), { zoom: 5, center: LonDonCoordinates });
+        var mapParis = new google.maps.Map(
+            document.getElementById('Paris'), { zoom: 5, center: ParisCoordinates });
+        var mapHCM = new google.maps.Map(
+            document.getElementById('HCM'), { zoom: 5, center: HCMCoordinates });
+        // The marker, positioned
+        var markerLonDon = new google.maps.Marker({ position: LonDonCoordinates, map: mapLonDon });
+        var markerParis = new google.maps.Marker({ position: ParisCoordinates, map: mapParis });
+        var markerHCM = new google.maps.Marker({ position: HCMCoordinates, map: mapHCM });
+    }
+</script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDmxubGq2KzG-6voA-u3Ala3z5BKAy3A5Q&callback=initMap">
+</script>
