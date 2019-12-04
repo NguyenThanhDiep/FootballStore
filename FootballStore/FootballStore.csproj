@@ -307,7 +307,7 @@
     <Content Include="Views\Manage\Index.cshtml" />
     <Content Include="Views\Manage\ChangePassword.cshtml" />
     <Content Include="Views\Manage\SetPassword.cshtml" />
-    <Content Include="Views\Shopping\_Delete.cshtml" />
+    <Content Include="Views\Shopping\_ChangeAmountProduct.cshtml" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Views\ChatRoom\ChatRoom.cshtml" />
     <Content Include="Views\Home\Branch.cshtml" />

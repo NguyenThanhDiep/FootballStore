@@ -22,8 +22,6 @@
             <th class="@(AmountAscending == false? "arrangedAsc" : AmountAscending == true ? "arrangedDes" : "")">
                 @Html.ActionLink(Localization.Shopping.link_Amount, "Shopping", new { AmountAscending = AmountAscending ?? true })
             </th>
-            <th>
-            </th>
         </tr>
     </thead>
     <tbody>
@@ -32,26 +30,29 @@
             <tr>
                 <td>@product.Name</td>
                 <td>@product.Price</td>
-                <td>@product.Amount</td>
-                <td><button type="button" onclick="Decrease1Product(@product.Id)">@Localization.Shopping.str_Decrease1Product</button></td>
+                <td>
+                    <button type="button" onclick="Decrease1Product(@product.Id)">-</button>
+                    @product.Amount
+                    <button type="button" onclick="Increase1Product(@product.Id)">+</button>
+                </td>
             </tr>
         }
     </tbody>
     <tfoot>
         <tr>
             <td>Total</td>
-            <td colspan="3">@ViewBag.TotalPrice vnd</td>
+            <td colspan="2">@ViewBag.TotalPrice vnd</td>
         </tr>
     </tfoot>
 </table>
 
 @{ if (ViewBag.ProductToDelete != null)
     {
-        Html.RenderPartial("_Delete", ViewBag.ProductToDelete as Order);
+        Html.RenderPartial("_ChangeAmountProduct", ViewBag.ProductToDelete as Order);
     }
     else
     {
-        Html.RenderPartial("_Delete", new Order());
+        Html.RenderPartial("_ChangeAmountProduct", new Order());
     }
 }
 
@@ -73,7 +74,12 @@
         });
 
         function Decrease1Product(id) {
-            $('#dialog-confirm').load('@Url.Action("Delete","Shopping")' + '/' + id);
+            $('#dialog-confirm').load('@Url.Action("ChangeAmountProduct", "Shopping")' + '/' + id + '?isIncrease=false');
+            $("#dialog-confirm").dialog("open");
+        };
+
+        function Increase1Product(id) {
+            $('#dialog-confirm').load('@Url.Action("ChangeAmountProduct", "Shopping")' + '/' + id+ '?isIncrease=true');
             $("#dialog-confirm").dialog("open");
         };
     </script>

@@ -120,8 +120,8 @@
   <data name="btn_Cancel" xml:space="preserve">
     <value>Hủy bỏ</value>
   </data>
-  <data name="btn_Delete" xml:space="preserve">
-    <value>Xóa</value>
+  <data name="btn_Ok" xml:space="preserve">
+    <value>Đồng ý</value>
   </data>
   <data name="link_Amount" xml:space="preserve">
     <value>Số lượng</value>
@@ -132,8 +132,11 @@
   <data name="link_Price" xml:space="preserve">
     <value>Giá (vnđ)</value>
   </data>
+  <data name="message_ConfirmAdd" xml:space="preserve">
+    <value>Bạn có chắc muốn đặt thêm 1 {0} không?</value>
+  </data>
   <data name="message_ConfirmDelete" xml:space="preserve">
-    <value>Sản phẩm sẽ bị xóa và không thể khôi phục. Bạn có chắc muốn xóa sản phẩm này?</value>
+    <value>Bạn có chắc bỏ đặt 1 {0} không?</value>
   </data>
   <data name="str_Decrease1Product" xml:space="preserve">
     <value>Giảm 1 sản phẩm</value>

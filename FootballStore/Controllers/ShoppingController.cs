@@ -5,6 +5,7 @@ using OfficeOpenXml;
 using OfficeOpenXml.Style;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -52,20 +53,31 @@ namespace FootballStore.Controllers
             return View(groupProducts.ToList());
         }
 
-        public ActionResult Delete(int? id)
+        public ActionResult ChangeAmountProduct(int? id, bool isIncrease)
         {
             if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             Order order = _db.Orders.Find(id);
             if (order == null) return HttpNotFound();
-            return PartialView("_Delete", order);
+            if (isIncrease) ViewBag.isIncrease = true;
+            else ViewBag.isIncrease = false;
+            return PartialView("_ChangeAmountProduct", order);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id)
+        public ActionResult ChangeAmountProduct(int id, bool isIncrease)
         {
             Order order = _db.Orders.Find(id);
-            _db.Orders.Remove(order);
+            if (isIncrease)
+            {
+                var userId = User.Identity.GetUserId();
+                _db.Entry(new Order()
+                {
+                    ProductId = order.ProductId,
+                    UserId = userId
+                }).State = EntityState.Added;
+            }
+            else _db.Orders.Remove(order);
             _db.SaveChanges();
             return RedirectToAction("Shopping");
         }

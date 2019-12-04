@@ -1,14 +1,15 @@
 ﻿@model FootballStore.Models.Order
-<div id="dialog-confirm" title="Are you sure to delete this?">
+<div id="dialog-confirm" title="Are you sure?">
     <p>
         <span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>
-        @Localization.Shopping.message_ConfirmDelete
+        @(ViewBag.isIncrease == true ? string.Format(Localization.Shopping.message_ConfirmAdd, Model.Product?.Name)
+            : string.Format(Localization.Shopping.message_ConfirmDelete, Model.Product?.Name))
     </p>
-    @using (Html.BeginForm("Delete", "Shopping", new { id = Model.Id }, FormMethod.Post))
+    @using (Html.BeginForm("ChangeAmountProduct", "Shopping", new { id = Model.Id, isIncrease = ViewBag.isIncrease }, FormMethod.Post))
     {
         @Html.AntiForgeryToken()
         <div class="form-actions no-color">
-            <input type="submit" value="@Localization.Shopping.btn_Delete" class="btn btn-default" />
+            <input type="submit" value="@Localization.Shopping.btn_Ok" class="btn btn-default" />
             <button id="btnCancel" type="button">@Localization.Shopping.btn_Cancel</button>
         </div>
     }

@@ -70,11 +70,11 @@ namespace Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Delete.
+        ///   Looks up a localized string similar to OK.
         /// </summary>
-        public static string btn_Delete {
+        public static string btn_Ok {
             get {
-                return ResourceManager.GetString("btn_Delete", resourceCulture);
+                return ResourceManager.GetString("btn_Ok", resourceCulture);
             }
         }
         
@@ -106,7 +106,16 @@ namespace Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to These items will be permanently deleted and cannot be recovered. Are you sure?.
+        ///   Looks up a localized string similar to Are you sure to add 1 more {0}?.
+        /// </summary>
+        public static string message_ConfirmAdd {
+            get {
+                return ResourceManager.GetString("message_ConfirmAdd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure to remove a {0}?.
         /// </summary>
         public static string message_ConfirmDelete {
             get {
