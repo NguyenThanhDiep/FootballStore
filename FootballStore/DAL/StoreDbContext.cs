@@ -21,6 +21,7 @@ namespace FootballStore.DAL
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<User>().Property(m => m.DateOfBirth).IsOptional();
             base.OnModelCreating(modelBuilder);
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
         }

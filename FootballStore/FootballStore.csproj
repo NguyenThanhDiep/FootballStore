@@ -181,6 +181,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\ShoppingController.cs" />
     <Compile Include="DAL\StoreDbContext.cs" />
     <Compile Include="DAL\StoreInitializer.cs" />
@@ -231,6 +232,7 @@
     <Compile Include="Models\ManageViewModel.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\RoleViewModel.cs" />
     <Compile Include="Models\ShoppingCard.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -311,6 +313,8 @@
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Views\ChatRoom\ChatRoom.cshtml" />
     <Content Include="Views\Home\Branch.cshtml" />
+    <Content Include="Views\Role\Role.cshtml" />
+    <Content Include="Views\Role\CreateRole.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

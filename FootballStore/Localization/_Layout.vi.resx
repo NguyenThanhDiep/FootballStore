@@ -135,6 +135,9 @@
   <data name="Product_Menu" xml:space="preserve">
     <value>Sản Phẩm</value>
   </data>
+  <data name="Role_Menu" xml:space="preserve">
+    <value>Quản lí</value>
+  </data>
   <data name="Shopping_Menu" xml:space="preserve">
     <value>Giỏ Hàng</value>
   </data>

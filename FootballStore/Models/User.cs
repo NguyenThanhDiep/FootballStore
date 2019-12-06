@@ -10,7 +10,7 @@ namespace FootballStore.Models
 {
     public class User : IdentityUser
     {
-        public DateTime DateOfBirth { get; set; }
+        public DateTime? DateOfBirth { get; set; }
         public virtual ICollection<Order> Orders { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager)

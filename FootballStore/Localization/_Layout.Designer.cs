@@ -115,6 +115,15 @@ namespace Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Manage.
+        /// </summary>
+        public static string Role_Menu {
+            get {
+                return ResourceManager.GetString("Role_Menu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Shopping Card.
         /// </summary>
         public static string Shopping_Menu {

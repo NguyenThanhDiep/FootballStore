@@ -1,0 +1,31 @@
+﻿@model IEnumerable<Microsoft.AspNet.Identity.EntityFramework.IdentityRole>
+@{
+    ViewBag.Title = "Role";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>List Roles</h2>
+@Html.ActionLink("Create a new role", "CreateRole")
+
+<table>
+    <thead>
+        <tr>
+            <th>Name Role</th>
+            <th>Users</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var role in Model)
+        {
+            <tr>
+                <td>@role.Name</td>
+                <td>@string.Join(",", role.Users)</td>
+                <td>
+                    @Html.ActionLink("Edit", "EditRole")
+                    @Html.ActionLink("Delete", "DeleteRole")
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

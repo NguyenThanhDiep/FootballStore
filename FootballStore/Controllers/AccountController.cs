@@ -74,6 +74,9 @@ namespace FootballStore.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
+                    var user = UserManager.FindByName(model.UserName);
+                    var result1 = await UserManager.IsInRoleAsync(user.Id, "Admin");
+                    Session["isAdmin"] = result1;
                     return RedirectToAction("Home", "Home");
                 case SignInStatus.LockedOut:
                     return View("Lockout");

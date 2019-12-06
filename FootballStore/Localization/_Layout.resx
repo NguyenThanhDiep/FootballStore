@@ -135,6 +135,9 @@
   <data name="Product_Menu" xml:space="preserve">
     <value>Product</value>
   </data>
+  <data name="Role_Menu" xml:space="preserve">
+    <value>Manage</value>
+  </data>
   <data name="Shopping_Menu" xml:space="preserve">
     <value>Shopping Card</value>
   </data>
