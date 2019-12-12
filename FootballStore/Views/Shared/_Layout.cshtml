@@ -30,7 +30,7 @@
                     <li class="@(ViewBag.Title == "Shopping" ? "choice": "")">@Html.ActionLink(Localization._Layout.Shopping_Menu, "Shopping", "Shopping")</li>
                     <li class="@(ViewBag.Title == "ChatRoom" ? "choice": "")">@Html.ActionLink(Localization._Layout.ChatRoom_Menu, "ChatRoom", "ChatRoom")</li>
                     <li class="@(ViewBag.Title == "Branch" ? "choice":"")">@Html.ActionLink(Localization._Layout.Branch_Menu, "Branch", "Home")</li>
-                    @if (Request.IsAuthenticated && Session["isAdmin"].ToString() == "True")
+                    @if (User.IsInRole("Admin"))
                     {
                         <li class="@(ViewBag.Title == "Role" ? "choice":"")">@Html.ActionLink(Localization._Layout.Role_Menu, "Role", "Role")</li>
                     }

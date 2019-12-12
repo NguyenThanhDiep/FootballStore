@@ -16,10 +16,10 @@
             <th class="@(NameAscending == false ? "arrangedAsc" : NameAscending == true ? "arrangedDes" : "")">
                 @Html.ActionLink(Localization.Shopping.link_Name, "Shopping", new { NameAscending = NameAscending ?? true })
             </th>
-            <th class="@(PriceAscending == false? "arrangedAsc" : PriceAscending == true ? "arrangedDes" : "")">
+            <th class="@(PriceAscending == false ? "arrangedAsc" : PriceAscending == true ? "arrangedDes" : "")">
                 @Html.ActionLink(Localization.Shopping.link_Price, "Shopping", new { PriceAscending = PriceAscending ?? true })
             </th>
-            <th class="@(AmountAscending == false? "arrangedAsc" : AmountAscending == true ? "arrangedDes" : "")">
+            <th class="@(AmountAscending == false ? "arrangedAsc" : AmountAscending == true ? "arrangedDes" : "")">
                 @Html.ActionLink(Localization.Shopping.link_Amount, "Shopping", new { AmountAscending = AmountAscending ?? true })
             </th>
         </tr>
@@ -46,17 +46,9 @@
     </tfoot>
 </table>
 
-@{ if (ViewBag.ProductToDelete != null)
-    {
-        Html.RenderPartial("_ChangeAmountProduct", ViewBag.ProductToDelete as Order);
-    }
-    else
-    {
-        Html.RenderPartial("_ChangeAmountProduct", new Order());
-    }
-}
+@*@{ Html.RenderPartial("_ChangeAmountProduct", new Order()); }*@
 
-@*@Html.Partial("Delete", new FootballStore.Models.Order())*@
+@Html.Partial("_ChangeAmountProduct", new Order())
 
 <div>
     @Html.ActionLink("Export to Excel", "ExportToExcel", new { currentUrl = Request.Url.PathAndQuery })

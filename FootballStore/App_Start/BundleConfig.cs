@@ -10,7 +10,8 @@ namespace FootballStore
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js",
-                        "~/Scripts/jquery-ui.min.js"));
+                        "~/Scripts/jquery-ui.min.js",
+                        "~/Scripts/select2.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
@@ -25,6 +26,7 @@ namespace FootballStore
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
+                      "~/Content/css/select2.min.css",
                       "~/Content/site.css"));
             bundles.Add(new StyleBundle("~/JqueryUI/css").Include(
                         "~/Content/jquery-ui.min.css",

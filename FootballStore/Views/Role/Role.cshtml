@@ -1,4 +1,5 @@
-﻿@model IEnumerable<Microsoft.AspNet.Identity.EntityFramework.IdentityRole>
+﻿@using Microsoft.AspNet.Identity.EntityFramework
+@model IEnumerable<FootballStore.Models.Role>
 @{
     ViewBag.Title = "Role";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -7,25 +8,49 @@
 <h2>List Roles</h2>
 @Html.ActionLink("Create a new role", "CreateRole")
 
-<table>
+<table class="table">
     <thead>
         <tr>
             <th>Name Role</th>
             <th>Users</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
         @foreach (var role in Model)
         {
             <tr>
-                <td>@role.Name</td>
-                <td>@string.Join(",", role.Users)</td>
+                <td>@role.Name <button type="button" onclick="ChangeNameRole('@role.Id')"><i class="glyphicon glyphicon-pencil"></i></button></td>
+                <td>@string.Join(", ", role.UsersName)</td>
                 <td>
-                    @Html.ActionLink("Edit", "EditRole")
-                    @Html.ActionLink("Delete", "DeleteRole")
+                    @Html.ActionLink("Edit role", "EditRole", new { id = role.Id }, new { @class = "ui-button" })
+                    <button type="button" class="ui-button" onclick="DeleteRole('@role.Id')">Delete role</button>
                 </td>
             </tr>
         }
     </tbody>
 </table>
 
+@Html.Partial("_RoleDialog", new IdentityRole())
+
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            $("#dialog-confirm").dialog({
+                resizable: false,
+                height: "auto",
+                width: 400,
+                modal: true,
+            });
+            $("#dialog-confirm").dialog("close");
+        });
+        function DeleteRole(id) {
+            $('#dialog-confirm').load('@Url.Action("DeleteRole", "Role")' + '/' + id);
+            $("#dialog-confirm").dialog("open");
+        };
+        function ChangeNameRole(id) {
+            $('#dialog-confirm').load('@Url.Action("ChangeNameRole", "Role")' + '/' + id);
+            $("#dialog-confirm").dialog("open");
+        }
+    </script>
+}
