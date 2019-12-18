@@ -1,0 +1,95 @@
+﻿@using FootballStore.Models
+@model FootballStore.Models.Role
+@{
+    ViewBag.Title = "EditRole";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Model.Name</h2>
+
+@using (Html.BeginForm("AddUserToRole", "Role", new { roleName = Model.Name }, FormMethod.Post, new { @class = "" }))
+{
+    <div class="form-group">
+        @Html.AntiForgeryToken()
+        <select id="userSelect2" name="userIds" style="width: 100%" multiple="multiple"></select>
+        <button type="submit" id="btnSubmit" class="btn btn-sm" disabled>Add to role</button>
+    </div>
+
+}
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>User</th>
+            <th>Date of birth</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model.Users)
+        {
+            <tr>
+                <td>@user.UserName</td>
+                <td>@(user.DateOfBirth == null ? "Unknown" : user.DateOfBirth?.ToString("dd/MM/yyyy"))</td>
+                <td><button class="ui-button" onclick="RemoveUser('@user.Id','@Model.Name')" type="button">Remove</button></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@Html.Partial("_UserDialog", new User())
+
+@Html.ActionLink("Back to Role page", "Role", null, new { @class = " btn btn-primary" })
+
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            $("#dialog-confirm").dialog({
+                resizable: false,
+                height: "auto",
+                width: 400,
+                modal: true,
+            });
+            $("#dialog-confirm").dialog("close");
+            $("#userSelect2").change(function () {
+                let selectedOptions = $(this).val();
+                if (selectedOptions.length === 0) $('#btnSubmit').prop('disabled', true);
+                else $('#btnSubmit').prop('disabled', false);
+            });
+
+            //Select2
+            $("#userSelect2").select2({
+                ajax: {
+                    url: '@Url.Action("GetHelplistUserName", "Role")',
+                    dataType: 'json',
+                    delay: 250,
+                    data: function (params) {
+                        var query = {
+                            userName: params.term,
+                            roleName: '@Model.Name'
+                        };
+                        return query;
+                    },
+                    processResults: function (data) {
+                        return { results: data };
+                    },
+                    cache: true
+                },
+                placeholder: 'Search user by name',
+                minimumInputLength: 0,
+                language: {
+                    noResults: function () {
+                        return "All users were in this role already";
+                    }
+                }
+            });
+
+
+        });
+        function RemoveUser(userId, roleName) {
+            $('#dialog-confirm').load('@Url.Action("RemoveUserFromRole", "Role")' + '?userId=' + userId + '&roleName=' + roleName);
+            $("#dialog-confirm").dialog("open");
+        }
+    </script>
+}
+

@@ -1,0 +1,25 @@
+﻿
+@model FootballStore.Models.User
+<div id="dialog-confirm" title="Are you sure?">
+    <p>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>
+        <span>Are you sure to remove @Model.UserName from @ViewBag.RoleName role?</span>
+        @using (Html.BeginForm("RemoveUserFromRole", "Role", new { userId = Model.Id, roleName = ViewBag.RoleName }, FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            <div class="form-actions no-color">
+                <input type="submit" value="@Localization.Shopping.btn_Ok" class="btn btn-default" />
+                <button id="btnCancel" type="button">@Localization.Shopping.btn_Cancel</button>
+            </div>
+        }
+    </p>
+</div>
+
+<script>
+    $("#btnCancel").click(function () {
+        $("#dialog-confirm").dialog("close");
+    });
+    $('button.ui-dialog-titlebar-close').text('X');
+</script>
+

@@ -1,0 +1,39 @@
+﻿@model Microsoft.AspNet.Identity.EntityFramework.IdentityRole
+
+<div id="dialog-confirm" title="Are you sure?">
+    <p>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>
+        @if (ViewBag.Purpose == "DeleteRole")
+        {
+            <span>Are you sure to delete the @Model.Name role?</span>
+            using (Html.BeginForm("DeleteRolePost", "Role", new { id = Model.Id }, FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                <div class="form-actions no-color">
+                    <input type="submit" value="@Localization.Shopping.btn_Ok" class="btn btn-default" />
+                    <button id="btnCancel" type="button">@Localization.Shopping.btn_Cancel</button>
+                </div>
+            }
+        }
+        @if (ViewBag.Purpose == "ChangeNameRole")
+        {
+            using (Html.BeginForm("ChangeNameRole", "Role", new { id = Model.Id }, FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                <input type="text" placeholder="New name..." name="newName" />
+                <div class="form-actions no-color">
+                    <input type="submit" value="@Localization.Shopping.btn_Ok" class="btn btn-default" />
+                    <button id="btnCancel" type="button">@Localization.Shopping.btn_Cancel</button>
+                </div>
+            }
+        }
+    </p>
+</div>
+
+<script>
+    $("#btnCancel").click(function () {
+        $("#dialog-confirm").dialog("close");
+    });
+    $('button.ui-dialog-titlebar-close').text('X');
+</script>
